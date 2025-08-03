@@ -1,0 +1,5 @@
+requests==2.31.0
+flask==3.0.0
+#python3 -m venv 01_virtual/.venv
+#source 01_virtual/.venv/bin/activate
+#pip install -r 01_virtual/requirements.txt

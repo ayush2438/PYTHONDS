@@ -1,0 +1,7 @@
+Groceries=set()
+print(id(Groceries))
+Groceries.add("ginger")
+Groceries.add("sugar")
+print(Groceries)
+Groceries.add("salt")
+print(id(Groceries))
