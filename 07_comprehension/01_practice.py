@@ -5,4 +5,4 @@ def filter_inventory(items: list[dict]) -> tuple[list[str], set[str], dict[str, 
     discounted_prices = list((int(item["price"] * 0.9) for item in items))
  
     return (affordable, categories, price_map, discounted_prices)
-#practice code
+#practice 
