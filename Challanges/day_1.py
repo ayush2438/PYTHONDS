@@ -25,19 +25,15 @@ Bonus:
 """
 
 import datetime
-name=input("Enter your name : ").strip()
-Age=input("Enter your age : ").strip()
-city=input("Enter your city :").strip()
-profession=input("Enter your profession : ").strip()
-fav_hobby=input("Enter your fav hobby : ").strip()
+def ask():
+    name = input("What is your name? ")
+    age = input("How old are you? ")
+    city = input("Which city do you live in? ")
+    profession = input("What is your profession? ")
+    hobby = input("What is your favorite hobby? ")
+    
+    return name, age, city, profession, hobby
 
-Paragraph=f"Hello! My name is {name}.\n I'm {Age} years old and live in {city}.\n I work as a {profession} and I absolutely enjoy {fav_hobby} in my free time.\n Nice to meet you! "
-
-datetime=datetime.date.today().isoformat()
-
-deco="*"*80
-
-print(f" {deco}\n {Paragraph}\n Logged on:{datetime}\n {deco}")
-
-
+def generate_paragraph(name, age, city, profession, hobby):
+    return f"Hello! My name is {name}.\n I'm {age} years old and live in {city}.\n I work as a {profession} and I absolutely enjoy {hobby} in my free time.\n Nice to meet you! "
 
