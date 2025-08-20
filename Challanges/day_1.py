@@ -23,17 +23,28 @@ Bonus:
 - Add the current date to the end of the paragraph like: "Logged on: 2025-06-14"
 - Wrap the printed message with a decorative border of stars (*)
 """
+from datetime import date
+from datetime import datetime
 
-import datetime
-def ask():
-    name = input("What is your name? ")
-    age = input("How old are you? ")
-    city = input("Which city do you live in? ")
-    profession = input("What is your profession? ")
-    hobby = input("What is your favorite hobby? ")
-    
-    return name, age, city, profession, hobby
+currenttime=datetime.now().strftime("%Ihr:%Mmin:%Ssec %p")
+today = date.today()
+def inputs():
+  Name=input("enter your name :")
+  Age=input("enter your Age :")
+  City=input("enter your City :")
+  Profession=input("enter your Profession :")
+  Hobby=input("enter your Hobby :")
+  return Name,Age,City,Profession,Hobby
 
-def generate_paragraph(name, age, city, profession, hobby):
-    return f"Hello! My name is {name}.\n I'm {age} years old and live in {city}.\n I work as a {profession} and I absolutely enjoy {hobby} in my free time.\n Nice to meet you! "
+Name, Age, City, Profession, Hobby = inputs()
 
+decoration = "*" * 80
+double_decoration = f"{decoration}\n{decoration}"
+
+# Use f-string for proper formatting
+Paragraph = f"Hello! My name is {Name}.\nI'm {Age} years old and live in {City}.\nI work as a {Profession} and I absolutely enjoy {Hobby} in my free time. Nice to meet you!\nlogged on:{today} ,{currenttime}"
+
+# Print with decoration
+print(double_decoration)
+print(Paragraph)
+print(double_decoration)

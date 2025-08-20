@@ -32,40 +32,63 @@ Bonus:
 - Let the user pick from 2-3 different layout styles.
 - Ask the user if they want to save the result into a `.txt` file.
 """
+# Stylish Bio Generator for Instagram/Twitter
+# Author: You
+# Date: August 2025
 
-import textwrap
-name = input("Enter your name: ").strip()
-profession = input("Enter your profession: ").strip()
-passion = input("Enter your passion in one line: ").strip()
-emoji = input("Enter your favourite emoji: ").strip()
-website = input("Enter your website: ").strip()
+def inputs():
+    print("🔧 Let's build your stylish bio!")
+    Name = input("Enter your name: ").strip()
+    Profession = input("Enter your profession: ").strip()
+    Passion = input("Enter your passion or goal (one line): ").strip()
+    Favorite_emoji = input("Enter your favorite emoji (optional): ").strip() or "✨"
+    Website = input("Enter your handle or website (optional): ").strip() or "N/A"
+    return Name, Profession, Passion, Favorite_emoji, Website
 
-print("\nChoose your style: ")
-print("1. Simple lines ")
-print("2. Vertical flair ")
-print("3. Emoji sandwich ")
+# Get user input
+Name, Profession, Passion, Favorite_emoji, Website = inputs()
 
-style = input("Enter 1, 2 or 3: ").strip()
+# Basic bio format
+base_format = f"{Favorite_emoji} {Name} | {Profession}\n💡 {Passion}\n🔗 {Website}"
 
-def generate_bio(style):
-    if style == "1":
-        return f"{emoji} {name} | {profession} \n💡 {passion}\n {website}" 
-    elif style == "2":
-        return f"{emoji} {name}\n {profession}🔥\n {passion} \n {website}🔥"
-    elif style == "3":
-        return f"{emoji*3}\n {name} - {profession}\n {passion}\n {website} \n {emoji*3}"
-    
-bio = generate_bio(style)
+# Layout options
+l_one = f"🔥 {base_format} ☄️"
+l_two = f"🌸 {base_format} 🎴"
+l_three = f"🌌 {base_format} ✨"
 
-print("\nYour stylish bio:\n")
-print("*" * 50)
-print(textwrap.dedent(bio))
-print("*" * 50)
+# Layout menu
+print("\n🎨 Choose a layout style:")
+print("1. Flairy 🔥☄️")
+print("2. Flowery 🌸🎴")
+print("3. Stars 🌌✨")
 
-save = input("Do you want to save this bio to a text file? (y/n): ").lower()
+# Normalize choice input
+choose = input("Enter 1, 2, or 3: ").strip().lower()
+layout_map = {
+    "1": l_one,
+    "flairy": l_one,
+    "2": l_two,
+    "flowery": l_two,
+    "3": l_three,
+    "stars": l_three
+}
 
-if save == 'y':
-    filename = f"{name.lower().replace(' ', '_')}_bio.txt"
-    with open(filename, "w", encoding="utf-8") as f:
-        f.write(bio)
-    print("file saved")
+# Select layout
+selected_bio = layout_map.get(choose, base_format)
+
+print("\n✨ Your Stylish Bio:\n")
+print(selected_bio)
+
+# Ask if user wants to save
+save = input("\n💾 Do you want to save this bio to a .txt file? (y/n): ").strip().lower()
+
+if save == "y":
+    file_name = Name.strip().replace(" ", "_") + "_bio.txt"
+    with open(file_name, "w") as f:
+        f.write(selected_bio + "\n")
+        # Optional hashtags
+        hashtags = f"#bio #{Profession.lower().replace(' ', '')} #passion"
+        f.write(hashtags)
+    print(f"\n✅ Bio saved to '{file_name}' with hashtags.")
+else:
+    print("\n👍 Bio not saved. You're all set!")
