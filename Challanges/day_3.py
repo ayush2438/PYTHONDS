@@ -61,4 +61,4 @@ if save == 'y':
         f.write(f"Total bill: {total_bill}\n")
         for name in names:
             f.write(f"{name} owes {share} rupees\n")
-    print("file saved")
+    print("file saved")v\
